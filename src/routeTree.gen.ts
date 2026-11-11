@@ -11,6 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as LecturerIndexRouteImport } from './routes/lecturer.index'
+import { Route as LecturerPanelRouteImport } from './routes/lecturer._panel'
+import { Route as LecturerLoginRouteImport } from './routes/lecturer.login'
+import { Route as TopicsIndexRouteImport } from './routes/topics.index'
+import { Route as TopicsIdRouteImport } from './routes/topics.$id'
+import { Route as LecturerPanelDashboardRouteImport } from './routes/lecturer._panel.dashboard'
+import { Route as LecturerPanelRegistrationsRouteImport } from './routes/lecturer._panel.registrations'
+import { Route as LecturerPanelTopicsIndexRouteImport } from './routes/lecturer._panel.topics.index'
+import { Route as LecturerPanelTopicsNewRouteImport } from './routes/lecturer._panel.topics.new'
+import { Route as LecturerPanelTopicsIdEditRouteImport } from './routes/lecturer._panel.topics.$id.edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +32,154 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LecturerIndexRoute = LecturerIndexRouteImport.update({
+  id: '/lecturer/',
+  path: '/lecturer/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LecturerPanelRoute = LecturerPanelRouteImport.update({
+  id: '/lecturer/_panel',
+  path: '/lecturer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LecturerLoginRoute = LecturerLoginRouteImport.update({
+  id: '/lecturer/login',
+  path: '/lecturer/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsIndexRoute = TopicsIndexRouteImport.update({
+  id: '/topics/',
+  path: '/topics/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsIdRoute = TopicsIdRouteImport.update({
+  id: '/topics/$id',
+  path: '/topics/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LecturerPanelDashboardRoute = LecturerPanelDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => LecturerPanelRoute,
+} as any)
+const LecturerPanelRegistrationsRoute =
+  LecturerPanelRegistrationsRouteImport.update({
+    id: '/registrations',
+    path: '/registrations',
+    getParentRoute: () => LecturerPanelRoute,
+  } as any)
+const LecturerPanelTopicsIndexRoute =
+  LecturerPanelTopicsIndexRouteImport.update({
+    id: '/topics/',
+    path: '/topics/',
+    getParentRoute: () => LecturerPanelRoute,
+  } as any)
+const LecturerPanelTopicsNewRoute = LecturerPanelTopicsNewRouteImport.update({
+  id: '/topics/new',
+  path: '/topics/new',
+  getParentRoute: () => LecturerPanelRoute,
+} as any)
+const LecturerPanelTopicsIdEditRoute =
+  LecturerPanelTopicsIdEditRouteImport.update({
+    id: '/topics/$id/edit',
+    path: '/topics/$id/edit',
+    getParentRoute: () => LecturerPanelRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/lecturer': typeof LecturerPanelRouteWithChildren
+  '/lecturer/login': typeof LecturerLoginRoute
+  '/topics/$id': typeof TopicsIdRoute
+  '/lecturer/': typeof LecturerIndexRoute
+  '/topics/': typeof TopicsIndexRoute
+  '/lecturer/dashboard': typeof LecturerPanelDashboardRoute
+  '/lecturer/registrations': typeof LecturerPanelRegistrationsRoute
+  '/lecturer/topics/new': typeof LecturerPanelTopicsNewRoute
+  '/lecturer/topics/': typeof LecturerPanelTopicsIndexRoute
+  '/lecturer/topics/$id/edit': typeof LecturerPanelTopicsIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/lecturer': typeof LecturerIndexRoute
+  '/lecturer/login': typeof LecturerLoginRoute
+  '/topics/$id': typeof TopicsIdRoute
+  '/topics': typeof TopicsIndexRoute
+  '/lecturer/dashboard': typeof LecturerPanelDashboardRoute
+  '/lecturer/registrations': typeof LecturerPanelRegistrationsRoute
+  '/lecturer/topics/new': typeof LecturerPanelTopicsNewRoute
+  '/lecturer/topics': typeof LecturerPanelTopicsIndexRoute
+  '/lecturer/topics/$id/edit': typeof LecturerPanelTopicsIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/lecturer/_panel': typeof LecturerPanelRouteWithChildren
+  '/lecturer/login': typeof LecturerLoginRoute
+  '/topics/$id': typeof TopicsIdRoute
+  '/lecturer/': typeof LecturerIndexRoute
+  '/topics/': typeof TopicsIndexRoute
+  '/lecturer/_panel/dashboard': typeof LecturerPanelDashboardRoute
+  '/lecturer/_panel/registrations': typeof LecturerPanelRegistrationsRoute
+  '/lecturer/_panel/topics/new': typeof LecturerPanelTopicsNewRoute
+  '/lecturer/_panel/topics/': typeof LecturerPanelTopicsIndexRoute
+  '/lecturer/_panel/topics/$id/edit': typeof LecturerPanelTopicsIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/lecturer'
+    | '/lecturer/login'
+    | '/topics/$id'
+    | '/lecturer/'
+    | '/topics/'
+    | '/lecturer/dashboard'
+    | '/lecturer/registrations'
+    | '/lecturer/topics/new'
+    | '/lecturer/topics/'
+    | '/lecturer/topics/$id/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/lecturer'
+    | '/lecturer/login'
+    | '/topics/$id'
+    | '/topics'
+    | '/lecturer/dashboard'
+    | '/lecturer/registrations'
+    | '/lecturer/topics/new'
+    | '/lecturer/topics'
+    | '/lecturer/topics/$id/edit'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/lecturer/_panel'
+    | '/lecturer/login'
+    | '/topics/$id'
+    | '/lecturer/'
+    | '/topics/'
+    | '/lecturer/_panel/dashboard'
+    | '/lecturer/_panel/registrations'
+    | '/lecturer/_panel/topics/new'
+    | '/lecturer/_panel/topics/'
+    | '/lecturer/_panel/topics/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  LecturerPanelRoute: typeof LecturerPanelRouteWithChildren
+  LecturerLoginRoute: typeof LecturerLoginRoute
+  TopicsIdRoute: typeof TopicsIdRoute
+  LecturerIndexRoute: typeof LecturerIndexRoute
+  TopicsIndexRoute: typeof TopicsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +198,107 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lecturer/': {
+      id: '/lecturer/'
+      path: '/lecturer'
+      fullPath: '/lecturer/'
+      preLoaderRoute: typeof LecturerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lecturer/_panel': {
+      id: '/lecturer/_panel'
+      path: '/lecturer'
+      fullPath: '/lecturer'
+      preLoaderRoute: typeof LecturerPanelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lecturer/login': {
+      id: '/lecturer/login'
+      path: '/lecturer/login'
+      fullPath: '/lecturer/login'
+      preLoaderRoute: typeof LecturerLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/': {
+      id: '/topics/'
+      path: '/topics'
+      fullPath: '/topics/'
+      preLoaderRoute: typeof TopicsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/$id': {
+      id: '/topics/$id'
+      path: '/topics/$id'
+      fullPath: '/topics/$id'
+      preLoaderRoute: typeof TopicsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lecturer/_panel/dashboard': {
+      id: '/lecturer/_panel/dashboard'
+      path: '/dashboard'
+      fullPath: '/lecturer/dashboard'
+      preLoaderRoute: typeof LecturerPanelDashboardRouteImport
+      parentRoute: typeof LecturerPanelRoute
+    }
+    '/lecturer/_panel/registrations': {
+      id: '/lecturer/_panel/registrations'
+      path: '/registrations'
+      fullPath: '/lecturer/registrations'
+      preLoaderRoute: typeof LecturerPanelRegistrationsRouteImport
+      parentRoute: typeof LecturerPanelRoute
+    }
+    '/lecturer/_panel/topics/': {
+      id: '/lecturer/_panel/topics/'
+      path: '/topics'
+      fullPath: '/lecturer/topics/'
+      preLoaderRoute: typeof LecturerPanelTopicsIndexRouteImport
+      parentRoute: typeof LecturerPanelRoute
+    }
+    '/lecturer/_panel/topics/new': {
+      id: '/lecturer/_panel/topics/new'
+      path: '/topics/new'
+      fullPath: '/lecturer/topics/new'
+      preLoaderRoute: typeof LecturerPanelTopicsNewRouteImport
+      parentRoute: typeof LecturerPanelRoute
+    }
+    '/lecturer/_panel/topics/$id/edit': {
+      id: '/lecturer/_panel/topics/$id/edit'
+      path: '/topics/$id/edit'
+      fullPath: '/lecturer/topics/$id/edit'
+      preLoaderRoute: typeof LecturerPanelTopicsIdEditRouteImport
+      parentRoute: typeof LecturerPanelRoute
+    }
   }
 }
+
+interface LecturerPanelRouteChildren {
+  LecturerPanelDashboardRoute: typeof LecturerPanelDashboardRoute
+  LecturerPanelRegistrationsRoute: typeof LecturerPanelRegistrationsRoute
+  LecturerPanelTopicsNewRoute: typeof LecturerPanelTopicsNewRoute
+  LecturerPanelTopicsIndexRoute: typeof LecturerPanelTopicsIndexRoute
+  LecturerPanelTopicsIdEditRoute: typeof LecturerPanelTopicsIdEditRoute
+}
+
+const LecturerPanelRouteChildren: LecturerPanelRouteChildren = {
+  LecturerPanelDashboardRoute: LecturerPanelDashboardRoute,
+  LecturerPanelRegistrationsRoute: LecturerPanelRegistrationsRoute,
+  LecturerPanelTopicsNewRoute: LecturerPanelTopicsNewRoute,
+  LecturerPanelTopicsIndexRoute: LecturerPanelTopicsIndexRoute,
+  LecturerPanelTopicsIdEditRoute: LecturerPanelTopicsIdEditRoute,
+}
+
+const LecturerPanelRouteWithChildren = LecturerPanelRoute._addFileChildren(
+  LecturerPanelRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  LecturerPanelRoute: LecturerPanelRouteWithChildren,
+  LecturerLoginRoute: LecturerLoginRoute,
+  TopicsIdRoute: TopicsIdRoute,
+  LecturerIndexRoute: LecturerIndexRoute,
+  TopicsIndexRoute: TopicsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
