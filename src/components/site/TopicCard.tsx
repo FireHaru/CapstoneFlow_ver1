@@ -22,12 +22,12 @@ export function TopicCard({ topic }: { topic: Topic }) {
       </div>
       <h3 className="mt-5 text-xl font-medium leading-snug text-foreground">{topic.title}</h3>
       <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
-      <div className="mt-5 flex flex-wrap gap-1.5">
+      <div className="mt-5 mb-4 flex flex-wrap gap-x-2 gap-y-3">
         {topic.technologies.slice(0, 4).map((t) => (
           <Badge key={t} variant="tech" className="rounded-full">{t}</Badge>
         ))}
       </div>
-      <div className="mt-auto flex items-center justify-between border-t border-border pt-5 mt-6">
+      <div className="mt-auto flex items-center justify-between border-t border-border pt-5">
         <div className="min-w-0">
           <p className="truncate text-sm font-medium text-foreground">{lecturer?.fullName}</p>
           <p className="truncate text-xs text-muted-foreground">{lecturer?.department}</p>

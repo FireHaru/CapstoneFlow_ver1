@@ -94,7 +94,7 @@ export function TopicForm({ initial, submitLabel, onSubmit }: { initial: TopicIn
           <div>
             <Label htmlFor="tech">Công nghệ</Label>
             <Input id="tech" value={techDraft} onChange={(e) => setTechDraft(e.target.value)} onKeyDown={onTechKey} onBlur={addTech} className="mt-2 h-11" placeholder="Gõ rồi nhấn Enter" />
-            <div className="mt-3 flex flex-wrap gap-1.5">
+            <div className="mt-3 flex flex-wrap gap-2">
               {values.technologies.map((t) => (
                 <Badge key={t} variant="tech" className="gap-1 rounded-full pr-1.5">
                   {t}

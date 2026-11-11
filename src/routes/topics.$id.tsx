@@ -66,7 +66,7 @@ function TopicDetail() {
           <Link to="/topics" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <ArrowLeft className="h-4 w-4" /> Kho đề tài
           </Link>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <TopicStatusBadge status={topic.status} />
             {topic.technologies.map((t) => (
               <Badge key={t} variant="tech" className="rounded-full">{t}</Badge>
