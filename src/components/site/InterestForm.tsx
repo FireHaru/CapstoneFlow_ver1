@@ -106,7 +106,7 @@ export function InterestForm({ topic }: { topic: Topic }) {
             onChange={(e) => setValues((v) => ({ ...v, message: e.target.value }))}
             className="mt-1.5 rounded-lg bg-background"
           />
-          {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+          {errors["message"] && <p className="mt-1 text-xs text-destructive">{errors["message"]}</p>}
         </div>
       </div>
       <Button type="submit" variant="gold" size="xl" className="mt-6 w-full">
