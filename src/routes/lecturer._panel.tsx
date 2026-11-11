@@ -1,9 +1,12 @@
 import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
-import { ExternalLink, FileText, LayoutDashboard, LogOut, Users } from "lucide-react";
-import { useEffect } from "react";
+import { ExternalLink, FileText, KeyRound, LayoutDashboard, LogOut, Users } from "lucide-react";
+import { useEffect, useState, type FormEvent } from "react";
+import { toast } from "sonner";
 
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { getLecturer, useStore } from "@/lib/store";
 
 export const Route = createFileRoute("/lecturer/_panel")({
@@ -17,9 +20,50 @@ const nav = [
 ] as const;
 
 function PanelLayout() {
-  const { hydrated, lecturerId, logout } = useStore();
+  const {
+    hydrated,
+    lecturerId,
+    passwordPromptDismissed,
+    dismissPasswordPrompt,
+    changePassword,
+    logout,
+  } = useStore();
   const navigate = useNavigate();
   const lecturer = getLecturer(lecturerId);
+  const [passwordDialog, setPasswordDialog] = useState<"change" | null>(null);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const showInitialPrompt = lecturerId !== null && !passwordPromptDismissed[lecturerId];
+  const showPasswordDialog = passwordDialog === "change" || showInitialPrompt;
+
+  const resetPasswordForm = () => {
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+    setPasswordError("");
+  };
+
+  const submitPasswordChange = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (newPassword.length < 8) {
+      setPasswordError("Mật khẩu mới cần có ít nhất 8 ký tự.");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setPasswordError("Mật khẩu xác nhận không khớp.");
+      return;
+    }
+    if (!changePassword(currentPassword, newPassword)) {
+      setPasswordError("Mật khẩu hiện tại không đúng.");
+      return;
+    }
+
+    resetPasswordForm();
+    setPasswordDialog(null);
+    toast.success("Đổi mật khẩu thành công.");
+  };
 
   useEffect(() => {
     if (hydrated && !lecturerId) navigate({ to: "/lecturer/login" });
@@ -58,7 +102,15 @@ function PanelLayout() {
               <p className="truncate text-xs text-ink-muted">{lecturer.department}</p>
             </div>
           </div>
-          <Button variant="ink-outline" size="sm" className="mt-4 w-full" onClick={() => { logout(); navigate({ to: "/lecturer/login" }); }}>
+          <Button
+            variant="ink-outline"
+            size="sm"
+            className="mt-4 w-full"
+            onClick={() => { resetPasswordForm(); setPasswordDialog("change"); }}
+          >
+            <KeyRound /> Đổi mật khẩu
+          </Button>
+          <Button variant="ink-outline" size="sm" className="mt-2 w-full" onClick={() => { logout(); navigate({ to: "/lecturer/login" }); }}>
             <LogOut /> Đăng xuất
           </Button>
         </div>
@@ -68,9 +120,19 @@ function PanelLayout() {
       <div className="sticky top-0 z-30 bg-sidebar text-sidebar-foreground lg:hidden">
         <div className="flex items-center justify-between px-4 py-3">
           <Logo tone="light" />
-          <Button variant="ink-outline" size="sm" onClick={() => { logout(); navigate({ to: "/lecturer/login" }); }}>
-            <LogOut />
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="ink-outline"
+              size="sm"
+              aria-label="Đổi mật khẩu"
+              onClick={() => { resetPasswordForm(); setPasswordDialog("change"); }}
+            >
+              <KeyRound />
+            </Button>
+            <Button variant="ink-outline" size="sm" aria-label="Đăng xuất" onClick={() => { logout(); navigate({ to: "/lecturer/login" }); }}>
+              <LogOut />
+            </Button>
+          </div>
         </div>
         <nav className="flex gap-1 overflow-x-auto px-3 pb-3">
           {nav.map((item) => (
@@ -86,6 +148,96 @@ function PanelLayout() {
           <Outlet />
         </div>
       </main>
+
+      {showPasswordDialog && (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/40 p-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="password-dialog-title"
+            className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-elegant"
+          >
+            {passwordDialog !== "change" ? (
+              <>
+                <h2 id="password-dialog-title" className="text-2xl">Đổi mật khẩu?</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Đây là lần đăng nhập đầu tiên của bạn. Bạn có thể đổi mật khẩu khởi tạo ngay bây giờ hoặc để sau.
+                </p>
+                <div className="mt-6 flex flex-wrap justify-end gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => { dismissPasswordPrompt(); toast("Bạn có thể đổi mật khẩu bất cứ lúc nào trong thanh bên."); }}
+                  >
+                    Để sau
+                  </Button>
+                  <Button
+                    variant="gold"
+                    onClick={() => { resetPasswordForm(); setPasswordDialog("change"); }}
+                  >
+                    Đổi mật khẩu
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2 id="password-dialog-title" className="text-2xl">Đổi mật khẩu</h2>
+                <p className="mt-2 text-sm text-muted-foreground">Mật khẩu mới cần có ít nhất 8 ký tự.</p>
+                <form onSubmit={submitPasswordChange} className="mt-6 space-y-4">
+                  <div>
+                    <Label htmlFor="current-password">Mật khẩu hiện tại</Label>
+                    <Input
+                      id="current-password"
+                      type="password"
+                      autoComplete="current-password"
+                      value={currentPassword}
+                      onChange={(event) => setCurrentPassword(event.target.value)}
+                      className="mt-1.5"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="new-password">Mật khẩu mới</Label>
+                    <Input
+                      id="new-password"
+                      type="password"
+                      autoComplete="new-password"
+                      value={newPassword}
+                      onChange={(event) => setNewPassword(event.target.value)}
+                      className="mt-1.5"
+                      minLength={8}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="confirm-password">Nhập lại mật khẩu mới</Label>
+                    <Input
+                      id="confirm-password"
+                      type="password"
+                      autoComplete="new-password"
+                      value={confirmPassword}
+                      onChange={(event) => setConfirmPassword(event.target.value)}
+                      className="mt-1.5"
+                      minLength={8}
+                      required
+                    />
+                  </div>
+                  {passwordError && <p role="alert" className="text-sm text-destructive">{passwordError}</p>}
+                  <div className="flex justify-end gap-3 pt-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => { resetPasswordForm(); setPasswordDialog(null); }}
+                    >
+                      {showInitialPrompt ? "Quay lại" : "Hủy"}
+                    </Button>
+                    <Button type="submit" variant="gold">Cập nhật mật khẩu</Button>
+                  </div>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

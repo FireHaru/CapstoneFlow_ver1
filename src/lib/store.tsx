@@ -14,11 +14,15 @@ interface State {
   topics: Topic[];
   registrations: Registration[];
   lecturerId: number | null;
+  lecturerPasswords: Record<number, string>;
+  passwordPromptDismissed: Record<number, boolean>;
 }
 
 interface Store extends State {
   hydrated: boolean;
   login: (email: string, password: string) => boolean;
+  dismissPasswordPrompt: () => void;
+  changePassword: (currentPassword: string, newPassword: string) => boolean;
   logout: () => void;
   createTopic: (input: TopicInput) => Topic;
   updateTopic: (id: number, input: TopicInput) => void;
@@ -29,7 +33,13 @@ interface Store extends State {
   resetDemo: () => void;
 }
 
-const initialState: State = { topics: seedTopics, registrations: seedRegistrations, lecturerId: null };
+const initialState: State = {
+  topics: seedTopics,
+  registrations: seedRegistrations,
+  lecturerId: null,
+  lecturerPasswords: {},
+  passwordPromptDismissed: {},
+};
 
 const StoreContext = createContext<Store | null>(null);
 
@@ -53,10 +63,36 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback((email: string, password: string) => {
     const lecturer = lecturers.find((l) => l.email.toLowerCase() === email.trim().toLowerCase());
-    const ok = !!lecturer && (password === DEMO_LOGIN.password);
+    const ok = !!lecturer && password === (state.lecturerPasswords[lecturer.id] ?? DEMO_LOGIN.password);
     if (ok) setState((s) => ({ ...s, lecturerId: lecturer.id }));
     return ok;
+  }, [state.lecturerPasswords]);
+
+  const dismissPasswordPrompt = useCallback(() => {
+    setState((s) => ({
+      ...s,
+      passwordPromptDismissed: s.lecturerId
+        ? { ...s.passwordPromptDismissed, [s.lecturerId]: true }
+        : s.passwordPromptDismissed,
+    }));
   }, []);
+
+  const changePassword = useCallback(
+    (currentPassword: string, newPassword: string) => {
+      if (!state.lecturerId || currentPassword !== (state.lecturerPasswords[state.lecturerId] ?? DEMO_LOGIN.password)) {
+        return false;
+      }
+
+      const lecturerId = state.lecturerId;
+      setState((s) => ({
+        ...s,
+        lecturerPasswords: { ...s.lecturerPasswords, [lecturerId]: newPassword },
+        passwordPromptDismissed: { ...s.passwordPromptDismissed, [lecturerId]: true },
+      }));
+      return true;
+    },
+    [state.lecturerId, state.lecturerPasswords],
+  );
 
   const logout = useCallback(() => setState((s) => ({ ...s, lecturerId: null })), []);
 
@@ -134,6 +170,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       ...state,
       hydrated,
       login,
+      dismissPasswordPrompt,
+      changePassword,
       logout,
       createTopic,
       updateTopic,
@@ -143,7 +181,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setRegistrationStatus,
       resetDemo,
     }),
-    [state, hydrated, login, logout, createTopic, updateTopic, deleteTopic, toggleTopicStatus, submitRegistration, setRegistrationStatus, resetDemo],
+    [state, hydrated, login, dismissPasswordPrompt, changePassword, logout, createTopic, updateTopic, deleteTopic, toggleTopicStatus, submitRegistration, setRegistrationStatus, resetDemo],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

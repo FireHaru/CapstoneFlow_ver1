@@ -6,6 +6,7 @@ export const lecturers: Lecturer[] = [
   { id: 1, fullName: "TS. Nguyễn Văn An", title: "Tiến sĩ", department: "Khoa Công nghệ Phần mềm", email: "an.nguyen@capstoneflow.edu.vn" },
   { id: 2, fullName: "ThS. Trần Thị Bích Ngọc", title: "Thạc sĩ", department: "Khoa Hệ thống Thông tin", email: "ngoc.tran@capstoneflow.edu.vn" },
   { id: 3, fullName: "PGS.TS. Lê Minh Quân", title: "Phó Giáo sư", department: "Khoa Khoa học Máy tính", email: "quan.le@capstoneflow.edu.vn" },
+  { id: 4, fullName: "PGS.TS. Nguyễn Nhật Đăng", title: "Phó Giáo sư", department: "Khoa Khoa học Máy tính", email: "nnd@hcmus.edu.vn" },
 ];
 
 export const seedTopics: Topic[] = [
