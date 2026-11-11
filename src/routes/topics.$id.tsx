@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/format";
 import { getLecturer, useStore } from "@/lib/store";
 
-export const Route = createFileRoute("/topics/")({
+export const Route = createFileRoute("/topics/$id")({
   head: () => ({
     meta: [
       { title: "Chi tiết đề tài — CapstoneFlow" },
