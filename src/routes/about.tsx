@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Cách hoạt động — CapstoneFlow" },
+      { title: "Giới thệu — CapstoneFlow" },
       { name: "description", content: "Tìm hiểu cách sinh viên và giảng viên sử dụng CapstoneFlow để kết nối qua đề tài đồ án tốt nghiệp." },
-      { property: "og:title", content: "Cách hoạt động — CapstoneFlow" },
+      { property: "og:title", content: "Giới thiệu — CapstoneFlow" },
       { property: "og:description", content: "Quy trình kết nối sinh viên và giảng viên trên CapstoneFlow." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,7 +35,7 @@ function About() {
   return (
     <PublicLayout>
       <section className="mx-auto max-w-4xl px-5 pb-12 pt-20 text-center">
-        <p className="eyebrow text-gold">Cách hoạt động</p>
+        <p className="eyebrow text-gold">Giới thiệu</p>
         <h1 className="mt-4 text-5xl font-normal md:text-6xl">
           Một nơi, <span className="italic text-gold">hai vai trò</span>
         </h1>

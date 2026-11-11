@@ -49,10 +49,8 @@ function Index() {
         <div className="absolute inset-0 -z-10 bg-hero-overlay" />
         <div className="mx-auto max-w-6xl px-5 pb-28 pt-24 md:pb-36 md:pt-32">
           <div className="max-w-2xl animate-rise">
-            <p className="eyebrow inline-flex items-center gap-2 text-gold">
-              <Sparkles className="h-3.5 w-3.5" /> Mùa đồ án 2026
-            </p>
-            <h1 className="mt-6 text-5xl font-normal leading-[1.05] text-ink-foreground md:text-7xl">
+            <p className="eyebrow inline-flex items-center gap-2 text-gold"> Mùa đồ án 2026</p>
+            <h1 className="hero-heading-italic mt-6 text-5xl font-normal leading-[1.05] text-ink-foreground md:text-7xl">
               Đề tài phù hợp,
               <br />
               <span className="italic text-gold">người hướng dẫn</span> đúng.

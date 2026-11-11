@@ -13,7 +13,7 @@ export function Logo({ tone = "default", className }: { tone?: "default" | "ligh
       </span>
       <span
         className={cn(
-          "font-display text-xl font-semibold tracking-tight",
+          "logo-wordmark text-xl tracking-tight",
           tone === "light" ? "text-ink-foreground" : "text-foreground",
         )}
       >

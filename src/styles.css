@@ -7,11 +7,11 @@
 /*
  * CapstoneFlow design system — "Academic luxe":
  * warm ivory paper, deep ink navy, champagne gold accents.
- * Fonts: Fraunces (display) + Be Vietnam Pro (body), loaded in __root head.
+ * Fonts: Plus Jakarta Sans for headings and display text; Be Vietnam Pro for body text.
  */
 
 @theme inline {
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -146,15 +146,26 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+}
 
-  h1,
-  h2,
-  h3,
-  .font-display {
-    font-family: var(--font-display);
-    font-optical-sizing: auto;
-    letter-spacing: -0.015em;
-  }
+h1,
+h2,
+h3 {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+.hero-heading-italic {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.logo-wordmark {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
 }
 
 @utility bg-hero-overlay {

@@ -7,7 +7,7 @@ import { Logo } from "./Logo";
 const nav = [
   { to: "/", label: "Trang chủ" },
   { to: "/topics", label: "Kho đề tài" },
-  { to: "/about", label: "Cách hoạt động" },
+  { to: "/about", label: "Giới thiệu" },
 ] as const;
 
 export function PublicHeader() {

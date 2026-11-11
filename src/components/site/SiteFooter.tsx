@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="space-y-3 text-sm">
           <p className="eyebrow text-gold">Sinh viên</p>
           <Link to="/topics" className="block text-ink-muted hover:text-ink-foreground">Kho đề tài</Link>
-          <Link to="/about" className="block text-ink-muted hover:text-ink-foreground">Cách hoạt động</Link>
+          <Link to="/about" className="block text-ink-muted hover:text-ink-foreground">Giới thiệu</Link>
         </div>
         <div className="space-y-3 text-sm">
           <p className="eyebrow text-gold">Giảng viên</p>
