@@ -37,7 +37,7 @@ export function InterestForm({ topic }) {
     return (
       <div className="rounded-2xl border border-border bg-muted/50 p-7 text-center">
         <Lock className="mx-auto h-6 w-6 text-muted-foreground" />
-        <h3 className="mt-4 text-xl font-medium">Đề tài đã đóng</h3>
+        <h3 className="mt-4 text-xl font-bold">Đề tài đã đóng</h3>
         <p className="mt-2 text-sm text-muted-foreground">
           Giảng viên hiện không nhận thêm đăng ký cho đề tài này.
         </p>
@@ -49,7 +49,7 @@ export function InterestForm({ topic }) {
     return (
       <div className="rounded-2xl border border-success/30 bg-success-soft p-7 text-center">
         <CheckCircle2 className="mx-auto h-8 w-8 text-success" />
-        <h3 className="mt-4 text-xl font-medium">Đã gửi thông tin!</h3>
+        <h3 className="mt-4 text-xl font-bold">Đã gửi thông tin!</h3>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75">
           Giảng viên sẽ xem và chủ động liên hệ với bạn. Lưu ý: đây chỉ là bày tỏ quan tâm, chưa
           phải xác nhận nhận đề tài.
@@ -93,7 +93,7 @@ export function InterestForm({ topic }) {
       className="rounded-2xl border border-border bg-card p-7 shadow-elegant"
     >
       <p className="eyebrow text-gold">Bày tỏ quan tâm</p>
-      <h3 className="mt-2 text-2xl font-normal">Gửi thông tin liên hệ</h3>
+      <h3 className="mt-2 text-2xl font-bold">Gửi thông tin liên hệ</h3>
       <div className="mt-6 grid grid-cols-2 gap-4">
         {fields.map((f) => (
           <div key={f.name} className={f.half ? "col-span-1" : "col-span-2"}>

@@ -24,7 +24,7 @@ export function Logo({ tone = "default", className }) {
           tone === "light" ? "text-ink-foreground" : "text-foreground",
         )}
       >
-        Capstone<span className="italic text-gold">Flow</span>
+        Capstone<span className="text-gradient">Flow</span>
       </span>
     </Link>
   );

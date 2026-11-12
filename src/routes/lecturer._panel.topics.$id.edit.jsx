@@ -30,7 +30,7 @@ function EditTopic() {
   if (!topic || !isOwner(topic, lecturerId)) {
     return (
       <div className="rounded-2xl border border-dashed border-border p-16 text-center">
-        <h1 className="text-3xl font-normal">Không tìm thấy đề tài</h1>
+        <h1 className="text-3xl font-bold">Không tìm thấy đề tài</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Đề tài không tồn tại hoặc không thuộc quyền quản lý của bạn.
         </p>

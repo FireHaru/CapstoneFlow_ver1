@@ -75,10 +75,10 @@ function Index() {
             <p className="eyebrow inline-flex items-center gap-2 text-gold">
               <Sparkles className="h-3.5 w-3.5" /> Mùa đồ án 2026
             </p>
-            <h1 className="mt-6 text-5xl font-normal leading-[1.05] text-ink-foreground md:text-7xl">
+            <h1 className="mt-6 text-5xl font-bold leading-[1.05] text-ink-foreground md:text-7xl">
               Đề tài phù hợp,
               <br />
-              <span className="italic text-gold">người hướng dẫn</span> đúng.
+              <span className="text-gradient">người hướng dẫn</span> đúng.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
               CapstoneFlow tập hợp đề tài đồ án tốt nghiệp từ giảng viên trong khoa — giúp bạn tìm
@@ -107,7 +107,7 @@ function Index() {
             { value: techCount, label: "Công nghệ" },
           ].map((s) => (
             <div key={s.label} className="px-4 py-7 text-center md:py-9">
-              <p className="font-display text-4xl font-medium text-foreground md:text-5xl">
+              <p className="font-display text-4xl font-extrabold text-foreground md:text-5xl">
                 {s.value}
               </p>
               <p className="mt-2 text-xs text-muted-foreground md:text-sm">{s.label}</p>
@@ -121,7 +121,7 @@ function Index() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow text-gold">Mới cập nhật</p>
-            <h2 className="mt-3 text-4xl font-normal md:text-5xl">Đề tài nổi bật</h2>
+            <h2 className="mt-3 text-4xl font-bold md:text-5xl">Đề tài nổi bật</h2>
           </div>
           <Button asChild variant="outline" className="rounded-full">
             <Link to="/topics">
@@ -141,7 +141,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="max-w-xl">
             <p className="eyebrow text-gold">Bốn bước</p>
-            <h2 className="mt-3 text-4xl font-normal md:text-5xl">
+            <h2 className="mt-3 text-4xl font-bold md:text-5xl">
               Từ ý tưởng đến cuộc trò chuyện
             </h2>
           </div>
@@ -152,9 +152,9 @@ function Index() {
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-soft text-accent-foreground">
                     <s.icon className="h-5 w-5" />
                   </span>
-                  <span className="font-display text-3xl italic text-border">0{i + 1}</span>
+                  <span className="font-display text-3xl font-extrabold text-border">0{i + 1}</span>
                 </div>
-                <h3 className="mt-6 text-xl font-medium">{s.title}</h3>
+                <h3 className="mt-6 text-xl font-bold">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
               </div>
             ))}
@@ -173,7 +173,7 @@ function Index() {
           <div className="relative grid items-center gap-8 md:grid-cols-[1.5fr_1fr]">
             <div>
               <p className="eyebrow text-gold">Dành cho giảng viên</p>
-              <h2 className="mt-3 text-3xl font-normal text-ink-foreground md:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold text-ink-foreground md:text-4xl">
                 Đăng đề tài, mở – đóng nhận đăng ký và theo dõi sinh viên quan tâm ở một nơi.
               </h2>
             </div>

@@ -53,8 +53,8 @@ function About() {
     <PublicLayout>
       <section className="mx-auto max-w-4xl px-5 pb-12 pt-20 text-center">
         <p className="eyebrow text-gold">Cách hoạt động</p>
-        <h1 className="mt-4 text-5xl font-normal md:text-6xl">
-          Một nơi, <span className="italic text-gold">hai vai trò</span>
+        <h1 className="mt-4 text-5xl font-bold md:text-6xl">
+          Một nơi, <span className="text-gradient">hai vai trò</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           CapstoneFlow là kho đề tài đồ án tốt nghiệp giúp sinh viên tìm hướng nghiên cứu và giảng
@@ -68,7 +68,7 @@ function About() {
             <span className="grid h-12 w-12 place-items-center rounded-full bg-gold-soft text-accent-foreground">
               <r.icon className="h-5 w-5" />
             </span>
-            <h2 className="mt-6 text-3xl font-normal">{r.title}</h2>
+            <h2 className="mt-6 text-3xl font-bold">{r.title}</h2>
             <ul className="mt-6 space-y-3">
               {r.items.map((i) => (
                 <li key={i} className="flex gap-3 text-sm leading-relaxed text-foreground/85">
@@ -82,7 +82,7 @@ function About() {
 
       <section className="mx-auto max-w-5xl px-5 pb-24">
         <div className="rounded-2xl border border-gold/40 bg-gold-soft/50 p-8">
-          <h3 className="text-2xl font-normal">Lưu ý quan trọng</h3>
+          <h3 className="text-2xl font-bold">Lưu ý quan trọng</h3>
           <p className="mt-3 leading-relaxed text-foreground/80">
             Việc gửi thông tin chỉ thể hiện sự quan tâm, không đồng nghĩa đã được nhận vào đề tài.
             Mỗi email chỉ gửi được một lần cho cùng một đề tài, và đề tài đã đóng sẽ không nhận thêm

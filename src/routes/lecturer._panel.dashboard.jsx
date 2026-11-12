@@ -74,7 +74,7 @@ function Dashboard() {
             <s.icon
               className={s.highlight ? "h-5 w-5 text-gold" : "h-5 w-5 text-muted-foreground"}
             />
-            <p className="mt-6 font-display text-4xl">{s.value}</p>
+            <p className="mt-6 font-display text-4xl font-extrabold">{s.value}</p>
             <p
               className={
                 s.highlight ? "mt-1 text-sm text-ink-muted" : "mt-1 text-sm text-muted-foreground"
@@ -89,7 +89,7 @@ function Dashboard() {
       <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
         <section className="rounded-2xl border border-border bg-card shadow-soft">
           <div className="flex items-center justify-between border-b border-border p-6">
-            <h2 className="text-xl font-medium">Lượt quan tâm gần đây</h2>
+            <h2 className="text-xl font-bold">Lượt quan tâm gần đây</h2>
             <Link
               to="/lecturer/registrations"
               className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
@@ -131,7 +131,7 @@ function Dashboard() {
 
         <section className="rounded-2xl border border-border bg-card shadow-soft">
           <div className="flex items-center justify-between border-b border-border p-6">
-            <h2 className="text-xl font-medium">Nhận đăng ký</h2>
+            <h2 className="text-xl font-bold">Nhận đăng ký</h2>
             <Link
               to="/lecturer/topics"
               className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"

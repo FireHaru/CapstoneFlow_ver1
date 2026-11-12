@@ -70,7 +70,7 @@ function TopicsPage() {
       <section className="border-b border-border bg-secondary/50">
         <div className="mx-auto max-w-6xl px-5 pb-10 pt-16">
           <p className="eyebrow text-gold">Kho đề tài</p>
-          <h1 className="mt-3 text-5xl font-normal md:text-6xl">Tìm hướng đi cho đồ án</h1>
+          <h1 className="mt-3 text-5xl font-bold md:text-6xl">Tìm hướng đi cho đồ án</h1>
           <p className="mt-4 max-w-xl text-muted-foreground">
             {topics.filter((t) => t.status === "OPEN").length} đề tài đang nhận sinh viên quan tâm.
           </p>
@@ -157,7 +157,7 @@ function TopicsPage() {
         <p className="mb-6 text-sm text-muted-foreground">{filtered.length} kết quả</p>
         {filtered.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border bg-card p-16 text-center">
-            <h2 className="text-2xl font-normal">Chưa có đề tài phù hợp</h2>
+            <h2 className="text-2xl font-bold">Chưa có đề tài phù hợp</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Thử bỏ bớt bộ lọc hoặc tìm với từ khóa khác.
             </p>

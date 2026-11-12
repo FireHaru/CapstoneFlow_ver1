@@ -61,8 +61,8 @@ function LoginPage() {
           <Logo tone="light" />
           <div>
             <p className="eyebrow text-gold">Cổng giảng viên</p>
-            <h1 className="mt-4 max-w-md text-5xl font-normal leading-tight text-ink-foreground">
-              Đề tài của bạn, <span className="italic text-gold">đúng người</span> tìm đến.
+            <h1 className="mt-4 max-w-md text-5xl font-bold leading-tight text-ink-foreground">
+              Đề tài của bạn, <span className="text-gradient">đúng người</span> tìm đến.
             </h1>
           </div>
         </div>
@@ -79,7 +79,7 @@ function LoginPage() {
           <div className="lg:hidden">
             <Logo />
           </div>
-          <h2 className="mt-8 text-4xl font-normal lg:mt-0">Đăng nhập</h2>
+          <h2 className="mt-8 text-4xl font-bold lg:mt-0">Đăng nhập</h2>
           <p className="mt-2 text-muted-foreground">Quản lý đề tài và sinh viên quan tâm.</p>
 
           <form onSubmit={onSubmit} className="mt-10 space-y-5">

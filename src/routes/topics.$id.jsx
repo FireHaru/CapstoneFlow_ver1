@@ -58,7 +58,7 @@ function TopicDetail() {
     return (
       <PublicLayout>
         <div className="mx-auto max-w-xl px-5 py-32 text-center">
-          <h1 className="text-4xl font-normal">
+          <h1 className="text-4xl font-bold">
             {hydrated ? "Không tìm thấy đề tài" : "Đang tải…"}
           </h1>
           {hydrated && (
@@ -89,7 +89,7 @@ function TopicDetail() {
               </Badge>
             ))}
           </div>
-          <h1 className="mt-6 max-w-4xl text-4xl font-normal leading-tight md:text-5xl">
+          <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
             {topic.title}
           </h1>
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
@@ -106,19 +106,19 @@ function TopicDetail() {
       <section className="mx-auto grid max-w-6xl gap-12 px-5 py-14 lg:grid-cols-[1fr_400px]">
         <div className="space-y-12">
           <div>
-            <h2 className="text-2xl font-normal">Mô tả</h2>
+            <h2 className="text-2xl font-bold">Mô tả</h2>
             <div className="gold-rule mt-3" />
             <p className="mt-5 text-lg leading-relaxed text-foreground/85">{topic.description}</p>
           </div>
           <div>
-            <h2 className="text-2xl font-normal">Mục tiêu</h2>
+            <h2 className="text-2xl font-bold">Mục tiêu</h2>
             <div className="gold-rule mt-3" />
             <div className="mt-5">
               <Lines text={topic.objectives} />
             </div>
           </div>
           <div>
-            <h2 className="text-2xl font-normal">Yêu cầu</h2>
+            <h2 className="text-2xl font-bold">Yêu cầu</h2>
             <div className="gold-rule mt-3" />
             <div className="mt-5">
               <Lines text={topic.requirements} />
