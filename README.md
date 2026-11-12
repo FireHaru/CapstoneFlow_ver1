@@ -1,26 +1,17 @@
-# Capstoneflow
+# CapstoneFlow
 
-dựa vào cái các miêu tả trong file tạo cho t một trang web cho t tên web phù hợp
+CapstoneFlow helps students find graduation-project topics and connect with lecturers.
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://capstoneflow.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/2835c402-6fd1-4e23-ac44-8c4f4e470263).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+The app uses Next.js, React, and JavaScript/JSX. Pages live in `src/pages`; shared UI,
+store logic, and styles live in `src/components`, `src/lib`, and `src/styles.css`.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Install Node.js and npm, then run:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+Use `npm run build` to create a production build and `npm start` to serve it.
