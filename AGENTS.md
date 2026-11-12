@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Write all app code in plain JavaScript (`.js`/`.jsx`), never TypeScript; only the auto-generated `src/routeTree.gen.ts` stays `.ts` because TanStack Start's generator always emits TS module declarations.
