@@ -98,8 +98,8 @@
   --gold: oklch(0.68 0.2 40);
   --gold-soft: oklch(0.95 0.045 55);
   --gold-foreground: oklch(0.99 0 0);
-  --ink: oklch(0.36 0.19 264);
-  --ink-soft: oklch(0.43 0.2 264);
+  --ink: oklch(0.42 0.21 264);
+  --ink-soft: oklch(0.48 0.22 264);
   --ink-foreground: oklch(0.99 0.005 250);
   --ink-muted: oklch(0.86 0.05 260);
   --success: oklch(0.6 0.16 155);
@@ -155,7 +155,7 @@
   h3,
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.012em;
   }
 }
 
