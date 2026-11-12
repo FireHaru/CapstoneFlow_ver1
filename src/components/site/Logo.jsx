@@ -20,11 +20,11 @@ export function Logo({ tone = "default", className }) {
       </span>
       <span
         className={cn(
-          "font-display text-xl font-semibold tracking-tight",
+          "font-display text-xl font-extrabold tracking-tight",
           tone === "light" ? "text-ink-foreground" : "text-foreground",
         )}
       >
-        Capstone<span className="text-gradient">Flow</span>
+        Capstone<span className={tone === "light" ? "text-gradient" : "text-primary"}>Flow</span>
       </span>
     </Link>
   );

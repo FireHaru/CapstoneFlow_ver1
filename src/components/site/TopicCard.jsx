@@ -20,7 +20,7 @@ export function TopicCard({ topic }) {
           <Users className="h-3.5 w-3.5" /> {topic.maxStudents} SV
         </span>
       </div>
-      <h3 className="mt-5 text-xl font-bold leading-snug text-foreground">{topic.title}</h3>
+      <h3 className="mt-5 text-xl font-semibold leading-snug text-foreground">{topic.title}</h3>
       <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
         {topic.description}
       </p>
