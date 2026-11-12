@@ -1,6 +1,6 @@
 {
   "include": ["src/**/*.js", "src/**/*.jsx", "vite.config.js", "vitest.config.js"],
-  "exclude": ["src/routeTree.gen.js"],
+  "exclude": ["src/routeTree.gen.ts"],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
