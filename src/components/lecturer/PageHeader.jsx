@@ -1,6 +1,4 @@
-                                       
-
-export function PageHeader({ eyebrow, title, description, actions }                                                                                ) {
+export function PageHeader({ eyebrow, title, description, actions }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-6 border-b border-border pb-8">
       <div>

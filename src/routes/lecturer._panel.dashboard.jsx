@@ -13,7 +13,10 @@ export const Route = createFileRoute("/lecturer/_panel/dashboard")({
   head: () => ({
     meta: [
       { title: "Tổng quan — Cổng giảng viên CapstoneFlow" },
-      { name: "description", content: "Tổng quan đề tài và lượt quan tâm của sinh viên dành cho giảng viên." },
+      {
+        name: "description",
+        content: "Tổng quan đề tài và lượt quan tâm của sinh viên dành cho giảng viên.",
+      },
       { property: "og:title", content: "Tổng quan — Cổng giảng viên CapstoneFlow" },
       { property: "og:description", content: "Bảng điều khiển giảng viên trên CapstoneFlow." },
       { property: "og:type", content: "website" },
@@ -27,13 +30,20 @@ function Dashboard() {
   const { topics, registrations, lecturerId, toggleTopicStatus } = useStore();
   const lecturer = getLecturer(lecturerId);
   const mine = topics.filter((t) => t.lecturerId === lecturerId);
-  const regs = registrationsForLecturer(topics, registrations, lecturerId).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  const regs = registrationsForLecturer(topics, registrations, lecturerId).sort((a, b) =>
+    b.createdAt.localeCompare(a.createdAt),
+  );
 
   const stats = [
     { label: "Tổng đề tài", value: mine.length, icon: FileText },
     { label: "Đang nhận", value: mine.filter((t) => t.status === "OPEN").length, icon: FolderOpen },
     { label: "Lượt quan tâm", value: regs.length, icon: Users },
-    { label: "Chưa liên hệ", value: regs.filter((r) => r.status === "NEW").length, icon: BellDot, highlight: true },
+    {
+      label: "Chưa liên hệ",
+      value: regs.filter((r) => r.status === "NEW").length,
+      icon: BellDot,
+      highlight: true,
+    },
   ];
 
   return (
@@ -44,17 +54,34 @@ function Dashboard() {
         description="Theo dõi đề tài và sinh viên quan tâm trong học kỳ này."
         actions={
           <Button asChild variant="gold" className="rounded-full">
-            <Link to="/lecturer/topics/new"><Plus /> Tạo đề tài</Link>
+            <Link to="/lecturer/topics/new">
+              <Plus /> Tạo đề tài
+            </Link>
           </Button>
         }
       />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className={s.highlight ? "rounded-2xl bg-ink p-6 text-ink-foreground shadow-elegant" : "rounded-2xl border border-border bg-card p-6 shadow-soft"}>
-            <s.icon className={s.highlight ? "h-5 w-5 text-gold" : "h-5 w-5 text-muted-foreground"} />
+          <div
+            key={s.label}
+            className={
+              s.highlight
+                ? "rounded-2xl bg-ink p-6 text-ink-foreground shadow-elegant"
+                : "rounded-2xl border border-border bg-card p-6 shadow-soft"
+            }
+          >
+            <s.icon
+              className={s.highlight ? "h-5 w-5 text-gold" : "h-5 w-5 text-muted-foreground"}
+            />
             <p className="mt-6 font-display text-4xl">{s.value}</p>
-            <p className={s.highlight ? "mt-1 text-sm text-ink-muted" : "mt-1 text-sm text-muted-foreground"}>{s.label}</p>
+            <p
+              className={
+                s.highlight ? "mt-1 text-sm text-ink-muted" : "mt-1 text-sm text-muted-foreground"
+              }
+            >
+              {s.label}
+            </p>
           </div>
         ))}
       </div>
@@ -63,7 +90,10 @@ function Dashboard() {
         <section className="rounded-2xl border border-border bg-card shadow-soft">
           <div className="flex items-center justify-between border-b border-border p-6">
             <h2 className="text-xl font-medium">Lượt quan tâm gần đây</h2>
-            <Link to="/lecturer/registrations" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+            <Link
+              to="/lecturer/registrations"
+              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+            >
               Tất cả <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -76,24 +106,36 @@ function Dashboard() {
                     {r.studentName.split(" ").pop()?.[0]}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium">{r.studentName} <span className="font-normal text-muted-foreground">· {r.studentClass}</span></p>
+                    <p className="truncate text-sm font-medium">
+                      {r.studentName}{" "}
+                      <span className="font-normal text-muted-foreground">· {r.studentClass}</span>
+                    </p>
                     <p className="truncate text-xs text-muted-foreground">{topic?.title}</p>
                   </div>
                   <div className="text-right">
                     <RegistrationStatusBadge status={r.status} />
-                    <p className="mt-1 text-xs text-muted-foreground">{formatDateTime(r.createdAt)}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {formatDateTime(r.createdAt)}
+                    </p>
                   </div>
                 </li>
               );
             })}
-            {regs.length === 0 && <li className="p-8 text-center text-sm text-muted-foreground">Chưa có sinh viên quan tâm.</li>}
+            {regs.length === 0 && (
+              <li className="p-8 text-center text-sm text-muted-foreground">
+                Chưa có sinh viên quan tâm.
+              </li>
+            )}
           </ul>
         </section>
 
         <section className="rounded-2xl border border-border bg-card shadow-soft">
           <div className="flex items-center justify-between border-b border-border p-6">
             <h2 className="text-xl font-medium">Nhận đăng ký</h2>
-            <Link to="/lecturer/topics" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+            <Link
+              to="/lecturer/topics"
+              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+            >
               Quản lý <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -102,9 +144,15 @@ function Dashboard() {
               <li key={t.id} className="flex items-center gap-4 p-5">
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-1 text-sm font-medium">{t.title}</p>
-                  <div className="mt-1.5"><TopicStatusBadge status={t.status} /></div>
+                  <div className="mt-1.5">
+                    <TopicStatusBadge status={t.status} />
+                  </div>
                 </div>
-                <Switch checked={t.status === "OPEN"} onCheckedChange={() => toggleTopicStatus(t.id)} aria-label="Mở/đóng nhận đăng ký" />
+                <Switch
+                  checked={t.status === "OPEN"}
+                  onCheckedChange={() => toggleTopicStatus(t.id)}
+                  aria-label="Mở/đóng nhận đăng ký"
+                />
               </li>
             ))}
           </ul>

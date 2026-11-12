@@ -6,7 +6,13 @@ import { PublicLayout } from "@/components/site/PublicLayout";
 import { TopicCard } from "@/components/site/TopicCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { lecturers } from "@/lib/mock-data";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
@@ -15,9 +21,16 @@ export const Route = createFileRoute("/topics/")({
   head: () => ({
     meta: [
       { title: "Kho đề tài đồ án — CapstoneFlow" },
-      { name: "description", content: "Tìm kiếm và lọc đề tài đồ án tốt nghiệp theo công nghệ, giảng viên và trạng thái nhận đăng ký." },
+      {
+        name: "description",
+        content:
+          "Tìm kiếm và lọc đề tài đồ án tốt nghiệp theo công nghệ, giảng viên và trạng thái nhận đăng ký.",
+      },
       { property: "og:title", content: "Kho đề tài đồ án — CapstoneFlow" },
-      { property: "og:description", content: "Danh sách đề tài đồ án tốt nghiệp đang mở nhận sinh viên." },
+      {
+        property: "og:description",
+        content: "Danh sách đề tài đồ án tốt nghiệp đang mở nhận sinh viên.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -25,12 +38,10 @@ export const Route = createFileRoute("/topics/")({
   component: TopicsPage,
 });
 
-                                              
-
 function TopicsPage() {
   const { topics } = useStore();
   const [q, setQ] = useState("");
-  const [status, setStatus] = useState              ("OPEN");
+  const [status, setStatus] = useState("OPEN");
   const [tech, setTech] = useState("all");
   const [lecturer, setLecturer] = useState("all");
 
@@ -82,7 +93,9 @@ function TopicsPage() {
                 <SelectContent>
                   <SelectItem value="all">Mọi công nghệ</SelectItem>
                   {techs.map((t) => (
-                    <SelectItem key={t} value={t}>{t}</SelectItem>
+                    <SelectItem key={t} value={t}>
+                      {t}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -93,7 +106,9 @@ function TopicsPage() {
                 <SelectContent>
                   <SelectItem value="all">Mọi giảng viên</SelectItem>
                   {lecturers.map((l) => (
-                    <SelectItem key={l.id} value={String(l.id)}>{l.fullName}</SelectItem>
+                    <SelectItem key={l.id} value={String(l.id)}>
+                      {l.fullName}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -101,13 +116,11 @@ function TopicsPage() {
           </div>
 
           <div className="mt-5 flex flex-wrap items-center gap-2">
-            {(
-              [
-                ["OPEN", "Đang nhận"],
-                ["CLOSED", "Đã đóng"],
-                ["ALL", "Tất cả"],
-              ]         
-            ).map(([value, label]) => (
+            {[
+              ["OPEN", "Đang nhận"],
+              ["CLOSED", "Đã đóng"],
+              ["ALL", "Tất cả"],
+            ].map(([value, label]) => (
               <button
                 key={value}
                 onClick={() => setStatus(value)}
@@ -145,7 +158,9 @@ function TopicsPage() {
         {filtered.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border bg-card p-16 text-center">
             <h2 className="text-2xl font-normal">Chưa có đề tài phù hợp</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Thử bỏ bớt bộ lọc hoặc tìm với từ khóa khác.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Thử bỏ bớt bộ lọc hoặc tìm với từ khóa khác.
+            </p>
           </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

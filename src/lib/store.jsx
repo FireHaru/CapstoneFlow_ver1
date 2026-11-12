@@ -1,8 +1,7 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState,                } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import { DEMO_LOGIN, lecturers, seedRegistrations, seedTopics } from "./mock-data";
-import { canRegister,                 } from "./topic-rules";
-                                                                                                      
+import { canRegister } from "./topic-rules";
 
 /**
  * Demo-only store: sample data lives in the browser (localStorage) so the
@@ -10,37 +9,18 @@ import { canRegister,                 } from "./topic-rules";
  */
 const STORAGE_KEY = "capstoneflow-demo-v1";
 
-                 
-                  
-                                
-                            
- 
+const initialState = { topics: seedTopics, registrations: seedRegistrations, lecturerId: null };
 
-                               
-                    
-                                                      
-                     
-                                            
-                                                       
-                                    
-                                          
-                                                                                
-                                                                          
-                        
- 
+const StoreContext = createContext(null);
 
-const initialState        = { topics: seedTopics, registrations: seedRegistrations, lecturerId: null };
-
-const StoreContext = createContext              (null);
-
-export function StoreProvider({ children }                         ) {
-  const [state, setState] = useState       (initialState);
+export function StoreProvider({ children }) {
+  const [state, setState] = useState(initialState);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) setState({ ...initialState, ...(JSON.parse(raw)         ) });
+      if (raw) setState({ ...initialState, ...JSON.parse(raw) });
     } catch {
       /* ignore broken demo storage */
     }
@@ -51,9 +31,9 @@ export function StoreProvider({ children }                         ) {
     if (hydrated) window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state, hydrated]);
 
-  const login = useCallback((email        , password        ) => {
+  const login = useCallback((email, password) => {
     const lecturer = lecturers.find((l) => l.email.toLowerCase() === email.trim().toLowerCase());
-    const ok = !!lecturer && (password === DEMO_LOGIN.password);
+    const ok = !!lecturer && password === DEMO_LOGIN.password;
     if (ok) setState((s) => ({ ...s, lecturerId: lecturer.id }));
     return ok;
   }, []);
@@ -61,9 +41,9 @@ export function StoreProvider({ children }                         ) {
   const logout = useCallback(() => setState((s) => ({ ...s, lecturerId: null })), []);
 
   const createTopic = useCallback(
-    (input            ) => {
+    (input) => {
       const now = new Date().toISOString();
-      const topic        = {
+      const topic = {
         ...input,
         id: Math.max(0, ...state.topics.map((t) => t.id)) + 1,
         lecturerId: state.lecturerId ?? 1,
@@ -76,14 +56,16 @@ export function StoreProvider({ children }                         ) {
     [state.topics, state.lecturerId],
   );
 
-  const updateTopic = useCallback((id        , input            ) => {
+  const updateTopic = useCallback((id, input) => {
     setState((s) => ({
       ...s,
-      topics: s.topics.map((t) => (t.id === id ? { ...t, ...input, updatedAt: new Date().toISOString() } : t)),
+      topics: s.topics.map((t) =>
+        t.id === id ? { ...t, ...input, updatedAt: new Date().toISOString() } : t,
+      ),
     }));
   }, []);
 
-  const deleteTopic = useCallback((id        ) => {
+  const deleteTopic = useCallback((id) => {
     setState((s) => ({
       ...s,
       topics: s.topics.filter((t) => t.id !== id),
@@ -91,23 +73,27 @@ export function StoreProvider({ children }                         ) {
     }));
   }, []);
 
-  const toggleTopicStatus = useCallback((id        ) => {
+  const toggleTopicStatus = useCallback((id) => {
     setState((s) => ({
       ...s,
       topics: s.topics.map((t) =>
         t.id === id
-          ? { ...t, status: t.status === "OPEN" ? "CLOSED" : "OPEN", updatedAt: new Date().toISOString() }
+          ? {
+              ...t,
+              status: t.status === "OPEN" ? "CLOSED" : "OPEN",
+              updatedAt: new Date().toISOString(),
+            }
           : t,
       ),
     }));
   }, []);
 
   const submitRegistration = useCallback(
-    (topicId        , input                   )             => {
+    (topicId, input) => {
       const topic = state.topics.find((t) => t.id === topicId);
       const check = canRegister(topic, state.registrations, input.studentEmail);
       if (!check.ok) return check;
-      const reg               = {
+      const reg = {
         ...input,
         id: Math.max(0, ...state.registrations.map((r) => r.id)) + 1,
         topicId,
@@ -120,16 +106,19 @@ export function StoreProvider({ children }                         ) {
     [state.topics, state.registrations],
   );
 
-  const setRegistrationStatus = useCallback((id        , status                    ) => {
+  const setRegistrationStatus = useCallback((id, status) => {
     setState((s) => ({
       ...s,
       registrations: s.registrations.map((r) => (r.id === id ? { ...r, status } : r)),
     }));
   }, []);
 
-  const resetDemo = useCallback(() => setState((s) => ({ ...initialState, lecturerId: s.lecturerId })), []);
+  const resetDemo = useCallback(
+    () => setState((s) => ({ ...initialState, lecturerId: s.lecturerId })),
+    [],
+  );
 
-  const value = useMemo       (
+  const value = useMemo(
     () => ({
       ...state,
       hydrated,
@@ -143,7 +132,19 @@ export function StoreProvider({ children }                         ) {
       setRegistrationStatus,
       resetDemo,
     }),
-    [state, hydrated, login, logout, createTopic, updateTopic, deleteTopic, toggleTopicStatus, submitRegistration, setRegistrationStatus, resetDemo],
+    [
+      state,
+      hydrated,
+      login,
+      logout,
+      createTopic,
+      updateTopic,
+      deleteTopic,
+      toggleTopicStatus,
+      submitRegistration,
+      setRegistrationStatus,
+      resetDemo,
+    ],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
@@ -155,6 +156,6 @@ export function useStore() {
   return ctx;
 }
 
-export function getLecturer(id                           ) {
+export function getLecturer(id) {
   return lecturers.find((l) => l.id === id);
 }

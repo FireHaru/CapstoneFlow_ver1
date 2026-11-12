@@ -8,7 +8,7 @@ const nav = [
   { to: "/", label: "Trang chủ" },
   { to: "/topics", label: "Kho đề tài" },
   { to: "/about", label: "Cách hoạt động" },
-]         ;
+];
 
 export function PublicHeader() {
   return (

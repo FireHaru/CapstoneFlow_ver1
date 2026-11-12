@@ -9,18 +9,27 @@ export function SiteFooter() {
         <div className="space-y-4">
           <Logo tone="light" />
           <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
-            Kho đề tài đồ án tốt nghiệp — nơi sinh viên tìm đúng hướng nghiên cứu và giảng viên gặp đúng người cộng sự.
+            Kho đề tài đồ án tốt nghiệp — nơi sinh viên tìm đúng hướng nghiên cứu và giảng viên gặp
+            đúng người cộng sự.
           </p>
         </div>
         <div className="space-y-3 text-sm">
           <p className="eyebrow text-gold">Sinh viên</p>
-          <Link to="/topics" className="block text-ink-muted hover:text-ink-foreground">Kho đề tài</Link>
-          <Link to="/about" className="block text-ink-muted hover:text-ink-foreground">Cách hoạt động</Link>
+          <Link to="/topics" className="block text-ink-muted hover:text-ink-foreground">
+            Kho đề tài
+          </Link>
+          <Link to="/about" className="block text-ink-muted hover:text-ink-foreground">
+            Cách hoạt động
+          </Link>
         </div>
         <div className="space-y-3 text-sm">
           <p className="eyebrow text-gold">Giảng viên</p>
-          <Link to="/lecturer/login" className="block text-ink-muted hover:text-ink-foreground">Đăng nhập</Link>
-          <Link to="/lecturer/dashboard" className="block text-ink-muted hover:text-ink-foreground">Bảng điều khiển</Link>
+          <Link to="/lecturer/login" className="block text-ink-muted hover:text-ink-foreground">
+            Đăng nhập
+          </Link>
+          <Link to="/lecturer/dashboard" className="block text-ink-muted hover:text-ink-foreground">
+            Bảng điều khiển
+          </Link>
         </div>
       </div>
       <div className="border-t border-ink-foreground/10">

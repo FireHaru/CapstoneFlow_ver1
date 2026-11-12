@@ -4,10 +4,7 @@ import { Minus } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const InputOTP = React.forwardRef 
-                                    
-                                                 
- (({ className, containerClassName, ...props }, ref) => (
+const InputOTP = React.forwardRef(({ className, containerClassName, ...props }, ref) => (
   <OTPInput
     ref={ref}
     containerClassName={cn(
@@ -20,18 +17,12 @@ const InputOTP = React.forwardRef
 ));
 InputOTP.displayName = "InputOTP";
 
-const InputOTPGroup = React.forwardRef 
-                          
-                                       
- (({ className, ...props }, ref) => (
+const InputOTPGroup = React.forwardRef(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("flex items-center", className)} {...props} />
 ));
 InputOTPGroup.displayName = "InputOTPGroup";
 
-const InputOTPSlot = React.forwardRef 
-                          
-                                                           
- (({ index, className, ...props }, ref) => {
+const InputOTPSlot = React.forwardRef(({ index, className, ...props }, ref) => {
   const inputOTPContext = React.useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index] ?? {
     char: null,
@@ -60,10 +51,7 @@ const InputOTPSlot = React.forwardRef
 });
 InputOTPSlot.displayName = "InputOTPSlot";
 
-const InputOTPSeparator = React.forwardRef 
-                          
-                                       
- (({ ...props }, ref) => (
+const InputOTPSeparator = React.forwardRef(({ ...props }, ref) => (
   <div ref={ref} role="separator" {...props}>
     <Minus />
   </div>

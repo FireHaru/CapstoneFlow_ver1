@@ -22,8 +22,8 @@ export const topicSchema = z.object({
   status: z.enum(["OPEN", "CLOSED"]),
 });
 
-export function fieldErrors(error            )                         {
-  const out                         = {};
+export function fieldErrors(error) {
+  const out = {};
   for (const issue of error.issues) {
     const key = String(issue.path[0] ?? "form");
     if (!out[key]) out[key] = issue.message;

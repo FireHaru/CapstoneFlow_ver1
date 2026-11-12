@@ -6,9 +6,8 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-                           
 } from "@tanstack/react-router";
-import { useEffect,                } from "react";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
@@ -37,7 +36,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }                     ) {
+function ErrorComponent({ error, reset }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -75,7 +74,7 @@ function ErrorComponent({ error, reset }                     ) {
   );
 }
 
-export const Route = createRootRouteWithContext                              ()({
+export const Route = createRootRouteWithContext()({
   head: () => ({
     // Replace these placeholders with the app's name and description when first building the app.
     // Each content route, / included, must still set its own head(). Never add og:image or
@@ -84,9 +83,15 @@ export const Route = createRootRouteWithContext                              ()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "CapstoneFlow — Kho đề tài đồ án tốt nghiệp" },
-      { name: "description", content: "CapstoneFlow kết nối sinh viên với giảng viên qua kho đề tài đồ án tốt nghiệp." },
+      {
+        name: "description",
+        content: "CapstoneFlow kết nối sinh viên với giảng viên qua kho đề tài đồ án tốt nghiệp.",
+      },
       { property: "og:title", content: "CapstoneFlow — Kho đề tài đồ án tốt nghiệp" },
-      { property: "og:description", content: "CapstoneFlow kết nối sinh viên với giảng viên qua kho đề tài đồ án tốt nghiệp." },
+      {
+        property: "og:description",
+        content: "CapstoneFlow kết nối sinh viên với giảng viên qua kho đề tài đồ án tốt nghiệp.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -110,7 +115,7 @@ export const Route = createRootRouteWithContext                              ()(
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }                         ) {
+function RootShell({ children }) {
   return (
     <html lang="vi">
       <head>

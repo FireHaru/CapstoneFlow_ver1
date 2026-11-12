@@ -8,9 +8,16 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "Cách hoạt động — CapstoneFlow" },
-      { name: "description", content: "Tìm hiểu cách sinh viên và giảng viên sử dụng CapstoneFlow để kết nối qua đề tài đồ án tốt nghiệp." },
+      {
+        name: "description",
+        content:
+          "Tìm hiểu cách sinh viên và giảng viên sử dụng CapstoneFlow để kết nối qua đề tài đồ án tốt nghiệp.",
+      },
       { property: "og:title", content: "Cách hoạt động — CapstoneFlow" },
-      { property: "og:description", content: "Quy trình kết nối sinh viên và giảng viên trên CapstoneFlow." },
+      {
+        property: "og:description",
+        content: "Quy trình kết nối sinh viên và giảng viên trên CapstoneFlow.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -22,12 +29,22 @@ const roles = [
   {
     icon: GraduationCap,
     title: "Sinh viên",
-    items: ["Xem danh sách đề tài", "Tìm kiếm và lọc theo công nghệ, giảng viên", "Xem chi tiết mục tiêu và yêu cầu", "Gửi thông tin liên hệ để bày tỏ quan tâm"],
+    items: [
+      "Xem danh sách đề tài",
+      "Tìm kiếm và lọc theo công nghệ, giảng viên",
+      "Xem chi tiết mục tiêu và yêu cầu",
+      "Gửi thông tin liên hệ để bày tỏ quan tâm",
+    ],
   },
   {
     icon: Presentation,
     title: "Giảng viên",
-    items: ["Đăng nhập và xem bảng điều khiển", "Tạo, sửa, xóa đề tài", "Mở hoặc đóng nhận đăng ký", "Xem lượt quan tâm và cập nhật đã liên hệ"],
+    items: [
+      "Đăng nhập và xem bảng điều khiển",
+      "Tạo, sửa, xóa đề tài",
+      "Mở hoặc đóng nhận đăng ký",
+      "Xem lượt quan tâm và cập nhật đã liên hệ",
+    ],
   },
 ];
 
@@ -40,8 +57,8 @@ function About() {
           Một nơi, <span className="italic text-gold">hai vai trò</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          CapstoneFlow là kho đề tài đồ án tốt nghiệp giúp sinh viên tìm hướng nghiên cứu và giảng viên tìm được nhóm sinh
-          viên phù hợp.
+          CapstoneFlow là kho đề tài đồ án tốt nghiệp giúp sinh viên tìm hướng nghiên cứu và giảng
+          viên tìm được nhóm sinh viên phù hợp.
         </p>
       </section>
 
@@ -67,9 +84,9 @@ function About() {
         <div className="rounded-2xl border border-gold/40 bg-gold-soft/50 p-8">
           <h3 className="text-2xl font-normal">Lưu ý quan trọng</h3>
           <p className="mt-3 leading-relaxed text-foreground/80">
-            Việc gửi thông tin chỉ thể hiện sự quan tâm, không đồng nghĩa đã được nhận vào đề tài. Mỗi email chỉ gửi được
-            một lần cho cùng một đề tài, và đề tài đã đóng sẽ không nhận thêm đăng ký. Thông tin cá nhân của sinh viên chỉ
-            hiển thị cho giảng viên phụ trách đề tài.
+            Việc gửi thông tin chỉ thể hiện sự quan tâm, không đồng nghĩa đã được nhận vào đề tài.
+            Mỗi email chỉ gửi được một lần cho cùng một đề tài, và đề tài đã đóng sẽ không nhận thêm
+            đăng ký. Thông tin cá nhân của sinh viên chỉ hiển thị cho giảng viên phụ trách đề tài.
           </p>
           <Button asChild variant="ink" className="mt-6 rounded-full">
             <Link to="/topics">

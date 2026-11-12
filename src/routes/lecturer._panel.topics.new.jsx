@@ -24,7 +24,11 @@ function NewTopic() {
   const navigate = useNavigate();
   return (
     <div className="space-y-8">
-      <PageHeader eyebrow="Đề tài mới" title="Tạo đề tài" description="Thông tin rõ ràng giúp sinh viên phù hợp tìm đến bạn." />
+      <PageHeader
+        eyebrow="Đề tài mới"
+        title="Tạo đề tài"
+        description="Thông tin rõ ràng giúp sinh viên phù hợp tìm đến bạn."
+      />
       <TopicForm
         initial={emptyTopic}
         submitLabel="Đăng đề tài"

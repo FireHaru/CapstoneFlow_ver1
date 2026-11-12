@@ -12,9 +12,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "CapstoneFlow — Tìm đề tài đồ án, kết nối giảng viên" },
-      { name: "description", content: "Khám phá kho đề tài đồ án tốt nghiệp, xem chi tiết yêu cầu và gửi thông tin quan tâm tới giảng viên hướng dẫn." },
+      {
+        name: "description",
+        content:
+          "Khám phá kho đề tài đồ án tốt nghiệp, xem chi tiết yêu cầu và gửi thông tin quan tâm tới giảng viên hướng dẫn.",
+      },
       { property: "og:title", content: "CapstoneFlow — Tìm đề tài đồ án, kết nối giảng viên" },
-      { property: "og:description", content: "Kho đề tài đồ án tốt nghiệp kết nối sinh viên với giảng viên hướng dẫn." },
+      {
+        property: "og:description",
+        content: "Kho đề tài đồ án tốt nghiệp kết nối sinh viên với giảng viên hướng dẫn.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -23,10 +30,26 @@ export const Route = createFileRoute("/")({
 });
 
 const steps = [
-  { icon: Search, title: "Khám phá", text: "Tìm kiếm và lọc đề tài theo công nghệ, giảng viên hoặc trạng thái." },
-  { icon: BookOpenCheck, title: "Tìm hiểu", text: "Đọc kỹ mô tả, mục tiêu và yêu cầu trước khi quyết định." },
-  { icon: Send, title: "Gửi quan tâm", text: "Để lại thông tin liên hệ chỉ trong một phút, không cần tài khoản." },
-  { icon: Handshake, title: "Trao đổi", text: "Giảng viên chủ động liên hệ để trao đổi và chốt nhóm." },
+  {
+    icon: Search,
+    title: "Khám phá",
+    text: "Tìm kiếm và lọc đề tài theo công nghệ, giảng viên hoặc trạng thái.",
+  },
+  {
+    icon: BookOpenCheck,
+    title: "Tìm hiểu",
+    text: "Đọc kỹ mô tả, mục tiêu và yêu cầu trước khi quyết định.",
+  },
+  {
+    icon: Send,
+    title: "Gửi quan tâm",
+    text: "Để lại thông tin liên hệ chỉ trong một phút, không cần tài khoản.",
+  },
+  {
+    icon: Handshake,
+    title: "Trao đổi",
+    text: "Giảng viên chủ động liên hệ để trao đổi và chốt nhóm.",
+  },
 ];
 
 function Index() {
@@ -58,8 +81,8 @@ function Index() {
               <span className="italic text-gold">người hướng dẫn</span> đúng.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
-              CapstoneFlow tập hợp đề tài đồ án tốt nghiệp từ giảng viên trong khoa — giúp bạn tìm hướng đi và kết nối
-              nhanh, rõ ràng, không giấy tờ.
+              CapstoneFlow tập hợp đề tài đồ án tốt nghiệp từ giảng viên trong khoa — giúp bạn tìm
+              hướng đi và kết nối nhanh, rõ ràng, không giấy tờ.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button asChild variant="gold" size="xl">
@@ -84,7 +107,9 @@ function Index() {
             { value: techCount, label: "Công nghệ" },
           ].map((s) => (
             <div key={s.label} className="px-4 py-7 text-center md:py-9">
-              <p className="font-display text-4xl font-medium text-foreground md:text-5xl">{s.value}</p>
+              <p className="font-display text-4xl font-medium text-foreground md:text-5xl">
+                {s.value}
+              </p>
               <p className="mt-2 text-xs text-muted-foreground md:text-sm">{s.label}</p>
             </div>
           ))}
@@ -116,7 +141,9 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="max-w-xl">
             <p className="eyebrow text-gold">Bốn bước</p>
-            <h2 className="mt-3 text-4xl font-normal md:text-5xl">Từ ý tưởng đến cuộc trò chuyện</h2>
+            <h2 className="mt-3 text-4xl font-normal md:text-5xl">
+              Từ ý tưởng đến cuộc trò chuyện
+            </h2>
           </div>
           <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
             {steps.map((s, i) => (
@@ -133,8 +160,8 @@ function Index() {
             ))}
           </div>
           <p className="mt-8 max-w-2xl border-l-2 border-gold pl-4 text-sm leading-relaxed text-muted-foreground">
-            Gửi thông tin chỉ thể hiện sự quan tâm, không đồng nghĩa bạn đã được nhận vào đề tài. Giảng viên sẽ chủ động
-            liên hệ để trao đổi thêm.
+            Gửi thông tin chỉ thể hiện sự quan tâm, không đồng nghĩa bạn đã được nhận vào đề tài.
+            Giảng viên sẽ chủ động liên hệ để trao đổi thêm.
           </p>
         </div>
       </section>
