@@ -54,7 +54,7 @@ function About() {
       <section className="mx-auto max-w-4xl px-5 pb-12 pt-20 text-center">
         <p className="eyebrow text-gold">Cách hoạt động</p>
         <h1 className="mt-4 text-5xl font-bold md:text-6xl">
-          Một nơi, <span className="text-gradient">hai vai trò</span>
+          Một nơi, <span className="text-gradient-strong">hai vai trò</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           CapstoneFlow là kho đề tài đồ án tốt nghiệp giúp sinh viên tìm hướng nghiên cứu và giảng
